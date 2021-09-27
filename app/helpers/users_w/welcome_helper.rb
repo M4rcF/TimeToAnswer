@@ -1,0 +1,2 @@
+module UsersW::WelcomeHelper
+end
