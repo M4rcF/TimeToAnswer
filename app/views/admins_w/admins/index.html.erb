@@ -1,9 +1,16 @@
-<h1>Listando administradores</h1>
-<table class="table table-hover">
-  <thead class="thead-dark">
+<div class="page-header pt-3">
+  <%= link_to 'Novo', new_admins_w_admin_path, class: "btn btn-outline-success"%>
+  <h2>Listando administradores</h2>
+</div>
+<table class="table table-striped">
+  <thead>
     <tr>
       <th scope="col">Id</th>
+      <th scope="col"></th>
       <th scope="col">Email</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -11,6 +18,8 @@
         <tr>
             <td><%= a.id %><td>
             <td><%= a.email %><td>
+            <td><%= link_to 'Editar', edit_admins_w_admin_path(a.id), class: "btn btn-outline-info"%></td>
+            <td><%= link_to 'Excluir', admins_w_admin_path(a.id), method: :delete, class: "btn btn-outline-danger", data: {confirm: 'Tem certeza ?' }%></td>
         <tr>
     <% end %>
   </tbody>
