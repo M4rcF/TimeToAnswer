@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admins_w do
+    get 'admins/index'
+  end
   namespace :site do
     get 'welcome/index'
   end

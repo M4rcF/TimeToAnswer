@@ -1,0 +1,2 @@
+module AdminsW::AdminsHelper
+end
