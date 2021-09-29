@@ -1,6 +1,14 @@
+<% if notice %>
+  </br>
+  <div class="alert alert-success" role="alert">
+   <%= notice %>
+  </div>
+<% end %>
+
 <div class="page-header pt-3">
-  <%= link_to 'Novo', new_admins_w_admin_path, class: "btn btn-outline-success"%>
-  <h2>Listando administradores</h2>
+  
+  <h2 style="display:inline-block">Listando administradores</h2>
+  <%= link_to 'Novo', new_admins_w_admin_path, class: "btn btn-outline-success", style: "float: right"%>
 </div>
 <table class="table table-striped">
   <thead>
@@ -19,8 +27,9 @@
             <td><%= a.id %><td>
             <td><%= a.email %><td>
             <td><%= link_to 'Editar', edit_admins_w_admin_path(a.id), class: "btn btn-outline-info"%></td>
-            <td><%= link_to 'Excluir', admins_w_admin_path(a.id), method: :delete, class: "btn btn-outline-danger", data: {confirm: 'Tem certeza ?' }%></td>
+            <td><%= link_to 'Excluir', admins_w_admin_path(a.id), method: :delete, class: "btn btn-outline-danger", data: {confirm: 'Tem certeza que deseja excluir esse administrador ?' }%></td>
         <tr>
     <% end %>
   </tbody>
 </table>
+<%= paginate @admins %>

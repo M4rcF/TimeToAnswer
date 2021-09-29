@@ -11,5 +11,7 @@
     <%= form.label :password_confirmation %>
     <%= form.text_field :password_confirmation, class: "form-control" %>
   </div></br>
-  <%= form.submit nil, class: "btn btn-primary" %>
+  <%= form.submit nil, class: "btn btn-primary", data: {confirm: 'Deseja prosseguir com essa ação ?'} %>
 <% end %>
+</br>
+<%= link_to 'Voltar', admins_w_admins_path, class: "btn btn-dark"%>
