@@ -18,10 +18,14 @@ namespace :dev do
       password_confirmation: DEFAULT_PASSWORD
     )
     puts "User created"
-    %x( rails dev:admin_fake ) 
+    %x( rails dev:admin_fake )
+    %x( rails dev:add_subjects )
+    puts "Subjects created" 
+    %x( rails dev:add_questions ) 
+    puts "Questions created"
   end
   # Faker
-  desc "Configura o ambiente"
+  desc "Cadastra administradores com informações falsas"
   task admin_fake: :environment do
     10.times do
       fake_password = Faker::Number.number(digits: 6)
@@ -33,4 +37,26 @@ namespace :dev do
       puts "Fake admin created"
     end
   end
+  # Subjects
+  desc "Cadastra asssuntos"
+  task add_subjects: :environment do
+    DEFAULT_FILES_PATH = File.join(Rails.root, 'lib', 'tmp')
+    file_name = "subjects.txt"
+    file_path = File.join(DEFAULT_FILES_PATH, file_name)
+    File.open(file_path, "r").each do |line|
+        Subject.create!(description: line.strip)
+    end
+  end
+   # Questions
+   desc "Cadastra questões"
+   task add_questions: :environment do
+     Subject.all.each do |subject|
+        rand(3..5).times do 
+          Question.create!(
+            description: "#{Faker::Lorem.paragraph} #{Faker::Lorem.question}",
+            subject: subject
+          )
+        end
+     end
+   end
 end

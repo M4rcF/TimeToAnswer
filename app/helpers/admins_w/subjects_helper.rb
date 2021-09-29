@@ -1,0 +1,2 @@
+module AdminsW::SubjectsHelper
+end

@@ -1,0 +1,10 @@
+<%= form_with(model: [ :admins_w, subject ], local: true) do |form| %>
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_field :description, class: "form-control" %>
+  </div>
+  </br>
+  <%= form.submit nil, class: "btn btn-primary", data: {confirm: 'Deseja prosseguir com essa ação ?'} %>
+<% end %>
+</br>
+<%= link_to 'Voltar', admins_w_subjects_path, class: "btn btn-dark"%>

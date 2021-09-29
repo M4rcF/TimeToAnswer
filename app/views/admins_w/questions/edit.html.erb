@@ -1,0 +1,14 @@
+<% if @question.errors.any? %>
+<div class="alert alert-danger" role="alert">
+  <ul>
+  <% @admin.errors.full_messages.each do |message| %>
+    <li><%= message %><li>
+  <% end %>
+  </ul>
+</div>
+<% end %>
+<div class="page-header pt-3">
+<h4>Editando: <%= @question.description %></h4>
+</div>
+
+<%= render 'form', question: @question %>

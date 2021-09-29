@@ -25,6 +25,8 @@
                 <div id="sidebar-nav" class="list-group border-0 rounded-0 text-sm-start min-vh-100">
                     <%= link_to 'Home', admins_w_welcome_index_path, class: "list-group-item border-end-0 d-inline-block text-truncate" %>
                     <%= link_to 'Admins', admins_w_admins_path, class: "list-group-item border-end-0 d-inline-block text-truncate" %>
+                    <%= link_to 'Questões', admins_w_questions_path, class: "list-group-item border-end-0 d-inline-block text-truncate" %>
+                    <%= link_to 'Assuntos/Áreas', admins_w_subjects_path, class: "list-group-item border-end-0 d-inline-block text-truncate" %>
                 </div>
             </div>
         </div>
@@ -35,4 +37,9 @@
     </div>
 </div>
   </body>
+  <% if notice %>
+    <script>
+        alert("<%= notice %>")
+    </script>
+  <% end %>
 </html>

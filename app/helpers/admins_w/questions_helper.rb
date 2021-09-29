@@ -1,0 +1,2 @@
+module AdminsW::QuestionsHelper
+end

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   namespace :admins_w do
     get 'welcome/index'
     resources :admins, only: [:index, :edit, :update, :destroy, :new, :create]
+    resources :subjects
+    resources :questions
   end
   namespace :users_w do
     get 'welcome/index'
