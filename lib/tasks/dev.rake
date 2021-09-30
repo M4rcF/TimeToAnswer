@@ -51,12 +51,27 @@ namespace :dev do
    desc "Cadastra questões"
    task add_questions: :environment do
      Subject.all.each do |subject|
-        rand(3..5).times do 
-          Question.create!(
-            description: "#{Faker::Lorem.paragraph} #{Faker::Lorem.question}",
-            subject: subject
-          )
+        rand(3..5).times do
+          params = {
+            question: {
+              description: "#{Faker::Lorem.paragraph} #{Faker::Lorem.question}",
+              subject: subject,
+              answers_attributes: random_answers
+            }}
+          Question.create!(params[:question])
         end
      end
+   end
+
+   private 
+
+   def random_answers
+      x = []
+      rand(2..4).times do
+        x.push({description: Faker::Lorem.sentence, correct: false})
+      end
+      random = rand(x.size)
+      x[random] = {description: Faker::Lorem.sentence, correct: true}
+      return x
    end
 end

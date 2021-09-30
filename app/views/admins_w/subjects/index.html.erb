@@ -20,7 +20,7 @@
             <td><%= a.id %><td>
             <td><%= a.description %><td>
             <td><%= link_to 'Editar', edit_admins_w_subject_path(a.id), class: "btn btn-outline-info"%></td>
-            <td><%= link_to 'Excluir', admins_w_subject_path(a.id), method: :delete, class: "btn btn-outline-danger", data: {confirm: 'Tem certeza que deseja excluir esse administrador ?' }%></td>
+            <td><%= link_to 'Excluir', admins_w_subject_path(a.id), method: :delete, class: "btn btn-outline-danger", data: {confirm: 'Tem certeza que deseja excluir esse(a) assunto/área ?' }%></td>
         <tr>
     <% end %>
   </tbody>

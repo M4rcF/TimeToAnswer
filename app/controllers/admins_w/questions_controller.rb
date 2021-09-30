@@ -3,8 +3,8 @@ class AdminsW::QuestionsController < AdminsWController
   before_action :set_params, only: [:update, :create]
   before_action :set_options_subjects, only: [:new, :create, :update, :edit]
 
-  def index
-    @questions = Question.all.order(:description).page(params[:page]).per(10)
+  def index                     #Resolve o problema n + 1
+    @questions = Question.includes(:subject).all.order(:description).page(params[:page]).per(10)
   end
 
   def edit
@@ -44,7 +44,7 @@ class AdminsW::QuestionsController < AdminsWController
   end
 
   def set_params
-    params.require(:question).permit(:description, :subject)
+    params.require(:question).permit(:description, :subject, answers_attributes: [:id, :description, :correct, :_destroy])
   end
 
   def set_options_subjects

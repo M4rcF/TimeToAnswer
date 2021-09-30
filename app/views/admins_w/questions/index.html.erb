@@ -1,6 +1,6 @@
 <div class="page-header pt-3">
   
-  <h2 style="display:inline-block">Listando Assunstos/Áreas</h2>
+  <h2 style="display:inline-block">Listando Questões</h2>
   <%= link_to 'Novo', new_admins_w_question_path, class: "btn btn-outline-success", style: "float: right"%>
 </div>
 <table class="table table-striped">
@@ -23,7 +23,7 @@
             <td><%= a.description.truncate(50) %><td>
             <td><%= a.subject.description %><td>
             <td><%= link_to 'Editar', edit_admins_w_question_path(a.id), class: "btn btn-outline-info"%></td>
-            <td><%= link_to 'Excluir', admins_w_question_path(a.id), method: :delete, class: "btn btn-outline-danger", data: {confirm: 'Tem certeza que deseja excluir esse administrador ?' }%></td>
+            <td><%= link_to 'Excluir', admins_w_question_path(a.id), method: :delete, class: "btn btn-outline-danger", data: {confirm: 'Tem certeza que deseja excluir essa questão ?' }%></td>
         <tr>
     <% end %>
   </tbody>
