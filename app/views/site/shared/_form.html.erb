@@ -1,0 +1,26 @@
+<!-- Questões -->
+<% @questions.each do |q| %>
+  <%= form_with(url: site_answer_path) do |f| %>
+    <div class="card" style="margin-bottom:40px">
+      <div class="card-header text-white bg-dark mb-3">
+        <h5><%= link_to q.subject.description, site_search_subject_path(q.subject.id, q.subject.description), class: "badge bg-info", style: "text-decoration: none;" %></h5>
+        <%= q.description %>
+      </div>
+      <div class="card-body">
+        <ul style="list-style-type: none;">
+          <% q.answers.each do |answer| %>
+            <li>
+                <div class="radio">
+                  <label>
+                    <%= radio_button_tag 'answer_id', answer.id %>
+                    <span id="span_<%= answer.id %>"><%= answer.description %></span>
+                  </label>
+                </div>
+            </li>
+          <% end %>
+        </ul>
+        <%= f.submit "Answer", class: "btn btn-warning", style: "float: right" %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

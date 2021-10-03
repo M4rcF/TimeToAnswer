@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TimeToAnswer</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <main>
+    <div class="container py-4">
+      <header class="p-3 bg-dark text-white">
+      <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
+      <div class="container-fluid">
+
+        <div class="collapse navbar-collapse" id="navbarsExample03">
+          <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+            <li class="nav-item">
+              <%= link_to 'Home', site_welcome_index_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled">Disabled</a>
+            </li>
+            <li class="nav-item">
+              <%= form_with(url: site_search_path, local: true, method: :get, class: "d-flex") do |f| %>
+                <%= f.text_field :explore, class: "form-control me-2", placeholder: "Search" %>
+                <%= f.submit "Search", class: "btn btn-outline-success"%>
+              <% end %>
+            </li>
+          </ul>
+          <% if user_signed_in? %>
+            <!-- Example single danger button -->
+            <div class="btn-group">
+              <button type="button" class="btn btn-outline-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Configurações
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><%= link_to 'Sign-out', destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
+              </ul>
+            </div>
+          <% else %>
+            <div style="margin-right:20px">
+              <%= link_to 'Sign-in', new_user_session_path, class: "btn btn-light" %> 
+            </div> 
+            <div>
+              <%= link_to 'Sign-up', new_user_registration_path, class: "btn btn-outline-warning" %>
+            </div> 
+          <% end %>
+        </div>
+      </div>
+    </nav>
+    </header>
+
+      <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+          <h1 class="display-5 fw-bold">Time To Answer</h1>
+          <p class="col-md-8 fs-4"><%= set_msg %></p>
+          <button class="btn btn-secondary btn-lg" type="button">Example button</button>
+        </div>
+      </div>
+      <div class="row align-items-md-stretch">
+      <%= yield %>
+
+      <footer class="pt-3 mt-4 text-muted border-top">
+        © 2021
+      </footer>
+    </div>
+  </main>
+    
+  </body>
+</html>

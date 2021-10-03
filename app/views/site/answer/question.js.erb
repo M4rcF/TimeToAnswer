@@ -1,0 +1,5 @@
+<% if @answer.correct %>
+    document.getElementById('span_<%= @answer.id %>').style.color = "green";
+<% else %>
+    document.getElementById('span_<%= @answer.id %>').style.color = "red";
+<% end %>
