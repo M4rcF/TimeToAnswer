@@ -9,6 +9,13 @@
 </br>
 <%= form_with(url: users_w_profile_path, model: @user, local: true) do |f|%>
   <%= f.fields_for :user_profile do |profile|%>
+    <!-- Image -->
+    <div class="row">
+      <div class="col">
+        <%= image_tag verify_profile_img, size: "150x100" %>
+        <%= profile.file_field :avatar%>
+      </div>
+    </div></br>
     <!-- Name -->
     <div class="row">
       <div class="col">

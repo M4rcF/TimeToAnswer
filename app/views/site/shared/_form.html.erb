@@ -24,3 +24,8 @@
     </div>
   <% end %>
 <% end %>
+<% if user_signed_in? %>
+<%= paginate @questions %>
+<% else %>
+<%= link_to 'Sign-up to continue', new_user_registration_path, class: "btn btn-outline-warning" %>
+<% end %>

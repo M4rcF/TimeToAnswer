@@ -18,12 +18,14 @@ namespace :dev do
       password_confirmation: DEFAULT_PASSWORD
     )
     puts "User created"
+    %x( rails dev:reset_statistic)
     %x( rails dev:admin_fake )
     %x( rails dev:add_subjects )
     puts "Subjects created" 
     %x( rails dev:add_questions ) 
     puts "Questions created"
   end
+
   # Faker
   desc "Cadastra administradores com informações falsas"
   task admin_fake: :environment do
@@ -37,6 +39,7 @@ namespace :dev do
       puts "Fake admin created"
     end
   end
+
   # Subjects
   desc "Cadastra asssuntos"
   task add_subjects: :environment do
@@ -47,6 +50,7 @@ namespace :dev do
         Subject.create!(description: line.strip)
     end
   end
+  
    # Questions
    desc "Cadastra questões"
    task add_questions: :environment do
@@ -64,12 +68,22 @@ namespace :dev do
    end
 
    # Questions count
-   desc "Resetar contador de questões"
+   desc "Reseta o contador de questões"
    task reset_questions_count: :environment do
      Subject.all.each do |subject|
         Subject.reset_counters(subject.id, :questions)
      end
      puts "Question counter reset"
+   end
+
+   # Statistics reset
+   desc "Reseta as estatísticas dos usuários"
+   task reset_statistic: :environment do
+     User.all.each do |user|
+        x = UserStatistic.find_or_create_by(user: user)
+        x.save
+     end
+     puts "Statistics reset"
    end
 
    private 

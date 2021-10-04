@@ -10,6 +10,7 @@ class UsersW::ProfileController < UsersWController
     end
 
     def update
+        bypass_sign_in(@user)
         if @user.update(set_params)
             redirect_to users_w_welcome_index_path
         else
@@ -25,7 +26,7 @@ class UsersW::ProfileController < UsersWController
 
     def set_params
         params.require(:user).permit(:email, :password, :password_confirmation, 
-        user_profile_attributes: [:id, :first_name, :last_name, :adress, :birthdate])
+        user_profile_attributes: [:id, :first_name, :last_name, :adress, :birthdate, :avatar])
     end
 
     def verify_password

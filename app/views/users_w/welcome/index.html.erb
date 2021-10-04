@@ -1,2 +1,22 @@
-<h4><%= "Hello #{@user.user_profile.first_name} #{@user.user_profile.last_name}" %></h4>
-<p>Find me in app/views/users_w/welcome/index.html.erb</p>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Total Questions</h5>
+    <p class="card-text"><%= @statistic.total_questions %></p>
+  </div>
+</div>
+</br>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Right Questions</h5>
+    <p class="card-text"><%= @statistic.right_questions %></p>
+  </div>
+</div>
+</br>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Wrong Questions</h5>
+    <p class="card-text"><%= @statistic.wrong_questions %></p>
+  </div>
+</div>
+</br>
+<%= link_to 'Reset', users_w_welcome_index_path, method: :patch, class: "btn btn-outline-info" %>

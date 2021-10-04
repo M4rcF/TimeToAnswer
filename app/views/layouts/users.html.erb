@@ -10,33 +10,62 @@
   </head>
 
   <body>
-   <div class="container-fluid">
-    <div class="row flex-nowrap">
-        <div class="col-auto px-0">
-            <div id="sidebar" class="collapse collapse-horizontal show border-end">
-                <div id="sidebar-nav" class="list-group border-0 rounded-0 text-sm-start min-vh-100">
-                    <!-- Itens -->
-                    <%= link_to 'Home', site_welcome_index_path, class: "list-group-item border-end-0 d-inline-block text-truncate" %>
-                    <%= link_to 'Status', users_w_welcome_index_path, class: "list-group-item border-end-0 d-inline-block text-truncate" %>
-                    <%= link_to 'Edit profile', users_w_profile_path, class: "list-group-item border-end-0 d-inline-block text-truncate" %>
-                    <%= link_to 'Sign-out', destroy_user_session_path, method: :delete, class: "list-group-item border-end-0 d-inline-block text-truncate" %>
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                        <h4 style="text-align:center; width:100%;">Perfil</h4>
+                        <span style="text-align:center; width:100%;">Time To Answer</span></br>
+                        <div style="width:100%;text-align:center;">
+                          <%= link_to image_tag(verify_profile_img, size: "100x100"), "#", "data-bs-toggle": "modal", "data-bs-target": "#staticBackdrop" %>
+                        </div></br>
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu"  style="width:100%;"> 
+                        <li class="nav-item"  style="border:1px solid #42484b; width:100%;text-align:center;margin-bottom:10px;">
+                            <%= link_to 'Home', site_welcome_index_path, class: "nav-link align-middle px-0", style: "color:white;" %>
+                        </li>
+                        <li class="nav-item" style="border:1px solid #42484b; width:100%;text-align:center;margin-bottom:10px;">
+                            <%= link_to 'Status', users_w_welcome_index_path, class: "nav-link align-middle px-0", style: "color:white;#{set_color("index")}" %>
+                        </li>
+                        <li class="nav-item"  style="border:1px solid #42484b; width:100%;text-align:center;margin-bottom:10px;">
+                            <%= link_to 'Edit profile', users_w_profile_path, class: "nav-link align-middle px-0", style: "color:white;#{set_color("edit")}"  %>
+                        </li>
+                        <li class="nav-item"  style="border:1px solid #42484b; width:100%;text-align:center;margin-bottom:10px;">
+                            <%= link_to 'Sign-out', destroy_user_session_path, method: :delete, class: "nav-link align-middle px-0", style: "color:white;"  %>
+                        </li>                                               
+                    </ul>
                 </div>
+            </div>
+            <div class="col py-3">
+                <%= yield %>
             </div>
         </div>
-        <main class="col ps-md-2 pt-2">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                        <div class="container-fluid">
-                            <span class="navbar-brand" href="#">Time To Answer</span>
-                        </div>
-                        </nav>
-            <a href="#" data-bs-target="#sidebar" data-bs-toggle="collapse" class="border rounded-3 p-1 text-decoration-none"><i class="bi bi-list bi-lg py-2 p-1"></i> Menu</a>
-            <div class="row">
-                <div class="col-12">
-                    <%= yield %>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <%= form_with(url: users_w_profile_path, model: current_user, local: true) do |f|%>
+        <%= f.fields_for :user_profile do |profile|%>
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Image -->
+                <div class="row">
+                    <div class="col">
+                        <%= image_tag verify_profile_img, size: "150x100" %>
+                        <%= profile.file_field :avatar%>
+                    </div>
                 </div>
             </div>
-        </main>
+            <div class="modal-footer">
+                <%= f.submit "Update", class: "btn btn-outline-primary" %>
+            </div>
+        <% end %>
+        <% end %>
+        </div>
     </div>
-</div>
+    </div>
   </body>
 </html>

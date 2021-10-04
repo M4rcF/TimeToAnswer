@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
   namespace :users_w do
     get 'welcome/index'
+    patch 'welcome/index', to: 'welcome#update'
     get 'profile', to: 'profile#edit'
     patch 'profile', to: 'profile#update'
   end
