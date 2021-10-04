@@ -3,7 +3,7 @@
   <%= form_with(url: site_answer_path) do |f| %>
     <div class="card" style="margin-bottom:40px">
       <div class="card-header text-white bg-dark mb-3">
-        <h5><%= link_to q.subject.description, site_search_subject_path(q.subject.id, q.subject.description), class: "badge bg-info", style: "text-decoration: none;" %></h5>
+        <h5><%= link_to "#{q.subject.description} (#{q.subject.questions_count})", site_search_subject_path(q.subject.id, q.subject.description), class: "badge bg-info", style: "text-decoration: none;" %></h5>
         <%= q.description %>
       </div>
       <div class="card-body">

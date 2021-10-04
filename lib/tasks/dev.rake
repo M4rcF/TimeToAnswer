@@ -63,6 +63,15 @@ namespace :dev do
      end
    end
 
+   # Questions count
+   desc "Resetar contador de questões"
+   task reset_questions_count: :environment do
+     Subject.all.each do |subject|
+        Subject.reset_counters(subject.id, :questions)
+     end
+     puts "Question counter reset"
+   end
+
    private 
 
    def random_answers

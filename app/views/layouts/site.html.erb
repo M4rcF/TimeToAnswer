@@ -19,15 +19,6 @@
         <div class="collapse navbar-collapse" id="navbarsExample03">
           <ul class="navbar-nav me-auto mb-2 mb-sm-0">
             <li class="nav-item">
-              <%= link_to 'Home', site_welcome_index_path, class: "nav-link" %>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled">Disabled</a>
-            </li>
-            <li class="nav-item">
               <%= form_with(url: site_search_path, local: true, method: :get, class: "d-flex") do |f| %>
                 <%= f.text_field :explore, class: "form-control me-2", placeholder: "Search" %>
                 <%= f.submit "Search", class: "btn btn-outline-success"%>
@@ -38,12 +29,10 @@
             <!-- Example single danger button -->
             <div class="btn-group">
               <button type="button" class="btn btn-outline-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                Configurações
+                Settings
               </button>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <li><%= link_to 'Profile', users_w_welcome_index_path, class: "dropdown-item" %></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><%= link_to 'Sign-out', destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
               </ul>
@@ -63,9 +52,8 @@
 
       <div class="p-5 mb-4 bg-light rounded-3">
         <div class="container-fluid py-5">
-          <h1 class="display-5 fw-bold">Time To Answer</h1>
+          <h1 class="display-5 fw-bold"><%= link_to 'Time To Answer', site_welcome_index_path, style: "text-decoration:none;color:#0dcaf0;"%></h1>
           <p class="col-md-8 fs-4"><%= set_msg %></p>
-          <button class="btn btn-secondary btn-lg" type="button">Example button</button>
         </div>
       </div>
       <div class="row align-items-md-stretch">

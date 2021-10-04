@@ -1,0 +1,43 @@
+</br>
+<% if @user.errors.any? %>
+<div class="alert alert-danger" role="alert">
+  <% @user.errors.full_messages.each do |message| %>
+    <%= message %></br>
+  <% end %>
+</div>
+<% end %>
+</br>
+<%= form_with(url: users_w_profile_path, model: @user, local: true) do |f|%>
+  <%= f.fields_for :user_profile do |profile|%>
+    <!-- Name -->
+    <div class="row">
+      <div class="col">
+        <%= profile.text_field :first_name, class: "form-control", placeholder: "First name" %>
+      </div>
+      <div class="col">
+        <%= profile.text_field :last_name, class: "form-control", placeholder: "Last name" %>
+      </div>
+    </div></br>
+    <!-- End -->
+    <div class="row">
+      <div class="col">
+        <%= profile.text_field :adress, class: "form-control", placeholder: "Adress" %>
+      </div>
+      <div class="col">
+        <%= profile.date_field :birthdate, class: "form-control", placeholder: "Birthdate" %>
+      </div>
+    </div></br>
+  <% end %>
+  <div class="form-group">
+    <%= f.text_field :email, class: "form-control", placeholder: "Email", readonly: true %>
+  </div></br>
+  <div class="row">
+    <div class="col">
+        <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+    </div>
+    <div class="col">
+        <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Password Confirmation" %>
+    </div>
+  </div></br>
+  <%= f.submit "Update", class: "btn btn-outline-primary" %>
+<% end %>

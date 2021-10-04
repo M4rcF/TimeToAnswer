@@ -13,9 +13,11 @@ Rails.application.routes.draw do
   end
   namespace :users_w do
     get 'welcome/index'
+    get 'profile', to: 'profile#edit'
+    patch 'profile', to: 'profile#update'
   end
   devise_for :users
-  devise_for :admins
+  devise_for :admins, skip: [:registration]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root to: 'site/welcome#index'
