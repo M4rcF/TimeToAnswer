@@ -1,5 +1,9 @@
-<div style="width:50%;border:1px solid #787878; margin: 0 auto; margin-top:10%;padding:30px">
-
+<div style="width:50%;border:1px solid #787878; margin: 0 auto; margin-top:5%;padding:30px">
+  <% flash.each do |key, value| %>
+    <div class="alert alert-danger" role="alert">
+      <div class="flash <%= key %>"><%= value %></div>
+    </div>
+  <% end %>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field">
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email" %>

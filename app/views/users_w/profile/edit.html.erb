@@ -1,50 +1,75 @@
-</br>
-<% if @user.errors.any? %>
-<div class="alert alert-danger" role="alert">
-  <% @user.errors.full_messages.each do |message| %>
-    <%= message %></br>
+<!-- MESSAGE -->
+  <!-- ACTION MESSAGE -->
+  <% if notice %>
+    <div class="alert alert-danger" role="alert">
+      <%= notice %>
+    </div>
+  <% end %>
+  </br>
+  <!-- ACTION MESSAGE END -->
+  <!-- ERROR MESSAGE -->
+  <% if @user.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <% @user.errors.full_messages.each do |message| %>
+      <%= message %></br>
+    <% end %>
+  </div>
+  <% end %>
+  </br>
+  <!-- ERROR MESSAGE END -->
+<!-- MESSAGE END -->
+<!-- FORM -->
+<div style="width:80%;border:4px solid #eeeeee;margin:0 auto;padding:20px;">
+  <%= form_with(url: users_w_profile_path, model: @user, local: true) do |f|%>
+    <%= f.fields_for :user_profile do |profile|%>
+      <!-- Image -->
+      <div class="row">
+        <div class="col">
+          <%= image_tag verify_profile_img, size: "150x100" %>
+          <%= profile.file_field :avatar%>
+        </div>
+      </div></br>
+      <!-- Image End -->
+      <!-- Name -->
+      <div class="row">
+        <div class="col">
+          <%= profile.label :first_name %>
+          <%= profile.text_field :first_name, class: "form-control"%>
+        </div>
+        <div class="col">
+          <%= profile.label :last_name %>
+          <%= profile.text_field :last_name, class: "form-control"%>
+        </div>
+      </div></br>
+      <!-- Name End -->
+      <div class="row">
+        <div class="col">
+          <%= profile.label :adress %>
+          <%= profile.text_field :adress, class: "form-control"%>
+        </div>
+        <div class="col">
+          <%= profile.label :birthdate %>
+          <%= profile.date_field :birthdate, class: "form-control" %>
+        </div>
+      </div></br>
+    <% end %>
+    <!-- User -->
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.text_field :email, class: "form-control", placeholder: "Email", readonly: true %>
+    </div></br>
+    <div class="row">
+      <div class="col">
+          <%= f.label :password %>
+          <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+      </div>
+      <div class="col">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Password Confirmation" %>
+      </div>
+    </div></br>
+    <%= f.submit nil, class: "btn btn-outline-primary" %>
+    <!-- User End -->
   <% end %>
 </div>
-<% end %>
-</br>
-<%= form_with(url: users_w_profile_path, model: @user, local: true) do |f|%>
-  <%= f.fields_for :user_profile do |profile|%>
-    <!-- Image -->
-    <div class="row">
-      <div class="col">
-        <%= image_tag verify_profile_img, size: "150x100" %>
-        <%= profile.file_field :avatar%>
-      </div>
-    </div></br>
-    <!-- Name -->
-    <div class="row">
-      <div class="col">
-        <%= profile.text_field :first_name, class: "form-control", placeholder: "First name" %>
-      </div>
-      <div class="col">
-        <%= profile.text_field :last_name, class: "form-control", placeholder: "Last name" %>
-      </div>
-    </div></br>
-    <!-- End -->
-    <div class="row">
-      <div class="col">
-        <%= profile.text_field :adress, class: "form-control", placeholder: "Adress" %>
-      </div>
-      <div class="col">
-        <%= profile.date_field :birthdate, class: "form-control", placeholder: "Birthdate" %>
-      </div>
-    </div></br>
-  <% end %>
-  <div class="form-group">
-    <%= f.text_field :email, class: "form-control", placeholder: "Email", readonly: true %>
-  </div></br>
-  <div class="row">
-    <div class="col">
-        <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
-    </div>
-    <div class="col">
-        <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Password Confirmation" %>
-    </div>
-  </div></br>
-  <%= f.submit "Update", class: "btn btn-outline-primary" %>
-<% end %>
+<!-- END FORM -->

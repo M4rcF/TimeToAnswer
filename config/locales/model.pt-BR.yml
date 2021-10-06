@@ -1,0 +1,61 @@
+'pt-BR':
+  activerecord:
+    models:
+      admin:
+        one: "Administrador"
+        other: "Administradores"
+      user:
+        one: "Usuário"
+        other: "Usuários"
+      answer:
+        one: "Resposta"
+        other: "Respostas"
+      question:
+        one: "Questão"
+        other: "Questões"
+      subject:
+        one: "Assunto"
+        other: "Assuntos"
+      user_profile:
+        one: "Perfil de usuário"
+        other: "Perfis de usuários"
+      user_statistic:
+        one: "Estatística do usuário"
+        other: "Estatísticas dos usuários"
+      admin_statistic:
+        one: "Estatística do administrador"
+        other: "Estatísticas dos administradores"
+    attributes:
+      admin:
+        id: "Código"
+        email: "Email"
+        password: "Senha"
+        password_confirmation: "Senha de confirmação"
+      user:
+        id: "Código"
+        email: "Email"
+        password: "Senha"
+        password_confirmation: "Senha de confirmação"
+      answer:
+        question_id: "Código da questão"
+        description: "Descrição"
+        correct: "Correto"
+      question:
+        description: "Descrição"
+        subject_id: "Assunto"
+      subject:
+        description: "Descrição"
+      user_profile:
+        first_name: "Primeiro nome"
+        last_name: "Último nome"
+        adress: "Endereço"
+        birthdate: "Data de nascimento"
+        user_id: "Código do usuário"
+      user_statistic:
+        user_id: "Código do usuário"
+        right_questions: "Questões certas"
+        wrong_questions: "Questões erradas"
+      admin_statistic:
+        event: "Evento"
+        value: "Valor"
+      

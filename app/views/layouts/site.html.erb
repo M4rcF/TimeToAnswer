@@ -20,9 +20,15 @@
           <ul class="navbar-nav me-auto mb-2 mb-sm-0">
             <li class="nav-item">
               <%= form_with(url: site_search_path, local: true, method: :get, class: "d-flex") do |f| %>
-                <%= f.text_field :explore, class: "form-control me-2", placeholder: "Search" %>
-                <%= f.submit "Search", class: "btn btn-outline-success"%>
+                <%= f.text_field :explore, class: "form-control me-2"%>
+                <%= f.submit t("search"), class: "btn btn-outline-success"%>
               <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to image_tag("https://cdn-icons-png.flaticon.com/512/330/330430.png", size: "30x30"), root_path(locale: "pt-BR"), class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to image_tag("https://cdn-icons-png.flaticon.com/512/555/555417.png", size: "30x30"), root_path(locale: "en"), class: "nav-link" %>
             </li>
           </ul>
           <% if admin_signed_in? %>
@@ -34,21 +40,21 @@
             <!-- Example single danger button -->
             <div class="btn-group">
               <button type="button" class="btn btn-outline-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                Settings
+                <%= t('settings') %>
               </button>
               <ul class="dropdown-menu">
                 
-                <li><%= link_to 'Profile', users_w_welcome_index_path, class: "dropdown-item" %></li>
+                <li><%= link_to t('profile'), users_w_welcome_index_path, class: "dropdown-item" %></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><%= link_to 'Sign-out', destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
+                <li><%= link_to t('sign-out'), destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
               </ul>
             </div>
           <% else %>
             <div style="margin-right:20px">
-              <%= link_to 'Sign-in', new_user_session_path, class: "btn btn-light" %> 
+              <%= link_to t('sign-in'), new_user_session_path, class: "btn btn-light" %> 
             </div> 
             <div>
-              <%= link_to 'Sign-up', new_user_registration_path, class: "btn btn-outline-info" %>
+              <%= link_to t('sign-up'), new_user_registration_path, class: "btn btn-outline-info" %>
             </div> 
           <% end %>
         </div>

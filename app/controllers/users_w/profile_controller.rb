@@ -12,7 +12,7 @@ class UsersW::ProfileController < UsersWController
     def update
         bypass_sign_in(@user)
         if @user.update(set_params)
-            redirect_to users_w_welcome_index_path
+            redirect_to users_w_profile_path, notice: "Usuário atualizado"
         else
             render :edit
         end

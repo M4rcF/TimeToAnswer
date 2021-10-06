@@ -1,0 +1,27 @@
+'pt-BR':
+  hello: "Olá"
+  search: "Procurar"
+  sign-in: "Entrar"
+  sign-up: "Cadastrar"
+  settings: "Configurações"
+  profile: "Perfil"
+  sign-out: "Sair"
+  asw: "Responder"
+  continue: "Cadastre-se para continuar"
+  menu:
+    home: "Início"
+    admins: "Administradores"
+    questions: "Questões"
+    subjects: "Assuntos"
+  btn:
+    back: "Voltar"
+    new: "Novo"
+    edit: "Editar"
+    delete: "Deletar"
+    add_answer: "Adicionar resposta"
+    remove_answer: "Remover resposta"
+  begin:
+    total_questions: "Total de Questões"
+    total_user: "Total de Usuários"
+    right_questions: "Questões Acertadas"
+    wrong_questions: "Questões Erradas"

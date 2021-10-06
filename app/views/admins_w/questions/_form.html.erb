@@ -1,3 +1,4 @@
+<div style="border:4px solid #eeeeee;width: 40%;padding:20px;margin:0 auto;">
 <%= form_with(model: [ :admins_w, question ], local: true) do |form| %>
   <div class="form-group">
     <%= form.label :description %>
@@ -13,11 +14,12 @@
         <%= render 'answer_fields', f: answer %>
     <% end %>
     <div class="links">
-      <%= link_to_add_association 'Adicionar resposta', form, :answers, class: "btn btn-success" %>
+      <%= link_to_add_association t('btn.add_answer'), form, :answers, class: "btn btn-success" %>
     </div>
     </br>
   </div>
   <%= form.submit nil, class: "btn btn-primary", data: {confirm: 'Deseja prosseguir com essa ação ?'} %>
 <% end %>
 </br>
-<%= link_to 'Voltar', admins_w_questions_path, class: "btn btn-dark"%>
+<%= link_to t('btn.back'), admins_w_questions_path, class: "btn btn-dark"%>
+</div>

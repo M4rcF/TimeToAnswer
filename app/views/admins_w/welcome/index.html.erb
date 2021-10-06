@@ -1,15 +1,17 @@
-<h2>Hello Admin (ᵔᴥᵔ)</h2>
-
-<div class="card" style="width: 18rem;">
+<div style="text-align:center;margin: 0 auto;">
+  <h2 style="font-family:Arial;"><%= t('hello') %> Admin (ᵔᴥᵔ)</h2>
+</div>
+</br>
+<div class="card">
   <div class="card-body">
-    <h5 class="card-title">Total Questions</h5>
+    <h5 class="card-title"><%= t('begin.total_questions') %></h5>
     <p class="card-text"><%= @statistic_q %></p>
   </div>
 </div>
 </br>
-<div class="card" style="width: 18rem;">
+<div class="card">
   <div class="card-body">
-    <h5 class="card-title">Total Users</h5>
+    <h5 class="card-title"><%= t('begin.total_user') %></h5>
     <p class="card-text"><%= @statistic_u %></p>
   </div>
 </div>

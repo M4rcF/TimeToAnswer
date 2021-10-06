@@ -12,9 +12,18 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
+          <!-- Add Language -->
+          <ul class="nav justify-content-end">
+            <li class="nav-item">
+              <%= link_to image_tag("https://cdn-icons-png.flaticon.com/512/330/330430.png", size: "30x30"), "?locale=pt-BR", class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+               <%= link_to image_tag("https://cdn-icons-png.flaticon.com/512/555/555417.png", size: "30x30"), "?locale=en", class: "nav-link" %>
+            </li>
+          </ul>
+          <!-- End Language -->
         <h4 class="navbar-brand"><%= current_admin.email %></h4>
-          <%= link_to 'Sign-out', destroy_admin_session_path, method: :delete, class: "btn btn-outline-warning", style: "float: right" %>
-        </div>
+        <%= link_to t('sign-out'), destroy_admin_session_path, method: :delete, class: "btn btn-outline-warning", style: "float: right" %>
       </div>
     </nav>
     <!-- SIDEBAR-->
@@ -23,11 +32,11 @@
         <div class="col-auto px-0">
             <div id="sidebar" class="collapse collapse-horizontal show border-end">
                 <div id="sidebar-nav" class="list-group border-0 rounded-0 text-sm-start min-vh-100">
-                    <%= link_to 'Home', site_welcome_index_path, class: "list-group-item border-end-0 d-inline-block text-truncate" %>
+                    <%= link_to t('menu.home'), site_welcome_index_path, class: "list-group-item border-end-0 d-inline-block text-truncate" %>
                     <%= link_to 'Status', admins_w_welcome_index_path, class: "list-group-item border-end-0 d-inline-block text-truncate" %>
-                    <%= link_to 'Admins', admins_w_admins_path, class: "list-group-item border-end-0 d-inline-block text-truncate" %>
-                    <%= link_to 'Questões', admins_w_questions_path, class: "list-group-item border-end-0 d-inline-block text-truncate" %>
-                    <%= link_to 'Assuntos/Áreas', admins_w_subjects_path, class: "list-group-item border-end-0 d-inline-block text-truncate" %>
+                    <%= link_to t('menu.admins'), admins_w_admins_path, class: "list-group-item border-end-0 d-inline-block text-truncate" %>
+                    <%= link_to t('menu.questions'), admins_w_questions_path, class: "list-group-item border-end-0 d-inline-block text-truncate" %>
+                    <%= link_to t('menu.subjects'), admins_w_subjects_path, class: "list-group-item border-end-0 d-inline-block text-truncate" %>
                 </div>
             </div>
         </div>
@@ -38,9 +47,4 @@
     </div>
 </div>
   </body>
-  <% if notice %>
-    <script>
-        alert("<%= notice %>")
-    </script>
-  <% end %>
 </html>

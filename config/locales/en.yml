@@ -30,4 +30,29 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  hello: "Hello"
+  search: "Search"
+  sign-in: "Sign-in"
+  sign-up: "Sign-up"
+  settings: "Settings"
+  profile: "Profile"
+  sign-out: "Sign-out"
+  asw: "Answer"
+  continue: "Sign-up to continue"
+  menu:
+    home: "Home"
+    admins: "Admins"
+    questions: "Questions"
+    Subjects: "Subjects"
+  btn:
+    back: "Back"
+    new: "New"
+    edit: "Edit"
+    delete: "Delete"
+    add_answer: "Add answer"
+    remove_answer: "Remove answer"
+  begin:
+    total_questions: "Total Questions"
+    total_user: "Total User"
+    right_questions: "Right Questions"
+    wrong_questions: "Wrong Questions"

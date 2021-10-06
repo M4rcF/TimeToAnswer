@@ -1,26 +1,24 @@
 <div class="page-header pt-3">
-  
-  <h2 style="display:inline-block">Listando administradores</h2>
-  <%= link_to 'Novo', new_admins_w_admin_path, class: "btn btn-outline-success", style: "float: right"%>
+  <%= link_to t('btn.new'), new_admins_w_admin_path, class: "btn btn-outline-success", style: "float: right"%>
 </div>
 <table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col"></th>
-      <th scope="col">Email</th>
-      <th scope="col"></th>
-      <th scope="col"></th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
+    <thead>
+      <tr>
+        <th scope="col"><%= set_name(:id) %></th>
+        <th scope="col"></th>
+        <th scope="col"><%= set_name(:email) %></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
     <% @admins.each do |a| %>
         <tr>
             <td><%= a.id %><td>
             <td><%= a.email %><td>
-            <td><%= link_to 'Editar', edit_admins_w_admin_path(a.id), class: "btn btn-outline-info"%></td>
-            <td><%= link_to 'Excluir', admins_w_admin_path(a.id), method: :delete, class: "btn btn-outline-danger", data: {confirm: 'Tem certeza que deseja excluir esse administrador ?' }%></td>
+            <td><%= link_to t('btn.edit'), edit_admins_w_admin_path(a.id), class: "btn btn-outline-info"%></td>
+            <td><%= link_to t('btn.delete'), admins_w_admin_path(a.id), method: :delete, class: "btn btn-outline-danger", data: {confirm: 'Tem certeza que deseja excluir esse administrador ?' }%></td>
         <tr>
     <% end %>
   </tbody>

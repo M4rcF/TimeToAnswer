@@ -2,11 +2,23 @@ module SiteHelper
     def set_msg
         case params[:action]
         when 'index'
-            "Perguntas cadastradas"    
+            if cookies[:locale] == 'pt-BR'
+                "Perguntas cadastradas"
+            else  
+                "All questions"
+            end  
         when 'questions'
-            "Resultados de \"#{params[:explore]}\""
+            if cookies[:locale] == 'pt-BR'
+                "Resultados de \"#{params[:explore]}\""
+            else  
+                "Research results: \"#{params[:explore]}\""
+            end  
         when 'subject'
-            "Questões relacionadas: \"#{params[:subject_description]}\""
+            if cookies[:locale] == 'pt-BR'
+                "Questões relacionadas: \"#{params[:subject_description]}\""
+            else  
+                "Questions related: \"#{params[:subject_description]}\" "
+            end  
         end
     end
 end

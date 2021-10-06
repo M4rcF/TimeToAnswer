@@ -17,25 +17,33 @@
                         <h4 style="text-align:center; width:100%;">Perfil</h4>
                         <span style="text-align:center; width:100%;">Time To Answer</span></br>
                         <div style="width:100%;text-align:center;">
-                          <%= link_to image_tag(verify_profile_img, size: "100x100"), "#", "data-bs-toggle": "modal", "data-bs-target": "#staticBackdrop" %>
+                          <%= link_to image_tag(verify_profile_img, size: "100x50"), "#", "data-bs-toggle": "modal", "data-bs-target": "#staticBackdrop" %>
                         </div></br>
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu"  style="width:100%;"> 
                         <li class="nav-item"  style="border:1px solid #42484b; width:100%;text-align:center;margin-bottom:10px;">
-                            <%= link_to 'Home', site_welcome_index_path, class: "nav-link align-middle px-0", style: "color:white;" %>
+                            <%= link_to t('menu.home'), site_welcome_index_path, class: "nav-link align-middle px-0", style: "color:white;" %>
                         </li>
                         <li class="nav-item" style="border:1px solid #42484b; width:100%;text-align:center;margin-bottom:10px;">
                             <%= link_to 'Status', users_w_welcome_index_path, class: "nav-link align-middle px-0", style: "color:white;#{set_color("index")}" %>
                         </li>
                         <li class="nav-item"  style="border:1px solid #42484b; width:100%;text-align:center;margin-bottom:10px;">
-                            <%= link_to 'Edit profile', users_w_profile_path, class: "nav-link align-middle px-0", style: "color:white;#{set_color("edit")}"  %>
-                        </li>
-                        <li class="nav-item"  style="border:1px solid #42484b; width:100%;text-align:center;margin-bottom:10px;">
-                            <%= link_to 'Sign-out', destroy_user_session_path, method: :delete, class: "nav-link align-middle px-0", style: "color:white;"  %>
-                        </li>                                               
+                            <%= link_to t('btn.edit'), users_w_profile_path, class: "nav-link align-middle px-0", style: "color:white;#{set_color("edit")}"  %>
+                        </li>                                            
                     </ul>
                 </div>
             </div>
             <div class="col py-3">
+                <ul class="nav justify-content-end">
+                  <li class="nav-item">
+                    <%= link_to image_tag("https://cdn-icons-png.flaticon.com/512/330/330430.png", size: "30x30"), "?locale=pt-BR", class: "nav-link" %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to image_tag("https://cdn-icons-png.flaticon.com/512/555/555417.png", size: "30x30"), "?locale=en", class: "nav-link" %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to t('sign-out'), destroy_user_session_path, method: :delete, class: "btn btn-warning"  %>
+                  </li>   
+                </ul>
                 <%= yield %>
             </div>
         </div>
