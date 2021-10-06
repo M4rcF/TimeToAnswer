@@ -25,13 +25,19 @@
               <% end %>
             </li>
           </ul>
+          <% if admin_signed_in? %>
+            <div style="margin-right:20px">
+              <%= link_to 'Admin', admins_w_welcome_index_path, class: "btn btn-warning" %> 
+            </div> 
+          <% end %>
           <% if user_signed_in? %>
             <!-- Example single danger button -->
             <div class="btn-group">
-              <button type="button" class="btn btn-outline-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              <button type="button" class="btn btn-outline-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 Settings
               </button>
               <ul class="dropdown-menu">
+                
                 <li><%= link_to 'Profile', users_w_welcome_index_path, class: "dropdown-item" %></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><%= link_to 'Sign-out', destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
@@ -42,7 +48,7 @@
               <%= link_to 'Sign-in', new_user_session_path, class: "btn btn-light" %> 
             </div> 
             <div>
-              <%= link_to 'Sign-up', new_user_registration_path, class: "btn btn-outline-warning" %>
+              <%= link_to 'Sign-up', new_user_registration_path, class: "btn btn-outline-info" %>
             </div> 
           <% end %>
         </div>

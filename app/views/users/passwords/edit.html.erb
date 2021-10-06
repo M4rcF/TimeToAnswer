@@ -1,25 +1,26 @@
-<h2>Change your password</h2>
-
+<div style="width:50%;border:1px solid #787878; margin: 0 auto; margin-top:10%;padding:30px">
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
   <%= f.hidden_field :reset_password_token %>
 
   <div class="field">
-    <%= f.label :password, "New password" %><br />
     <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em><br />
     <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
+    <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control", placeholder: "Password"  %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Password Confirmation"  %>
   </div>
-
+</br>
   <div class="actions">
-    <%= f.submit "Change my password" %>
+    <%= f.submit "Change my password", class: "btn btn-info", style: "width: 100%; color:white;"   %>
   </div>
 <% end %>
-
-<%= render "users/shared/links" %>
+</br>
+<div style="background:#eeeeee; border-radius:5px; text-align:center;padding:10px">
+  <%= render "users/shared/links" %>
+</div>
+</div>

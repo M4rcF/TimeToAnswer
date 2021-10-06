@@ -13,6 +13,7 @@ class AdminsW::AdminsController < AdminsWController
   def update
     
     if @admin.update(set_params)
+      AdminMailer.update_email(current_admin, @admin).deliver_now
       redirect_to admins_w_admins_path, notice: "Administrador atualizado"
     else
       render :edit

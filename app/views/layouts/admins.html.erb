@@ -13,7 +13,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
         <h4 class="navbar-brand"><%= current_admin.email %></h4>
-          <%= link_to 'Sign-out', destroy_admin_session_path, method: :delete, class: "navbar-text" %>
+          <%= link_to 'Sign-out', destroy_admin_session_path, method: :delete, class: "btn btn-outline-warning", style: "float: right" %>
         </div>
       </div>
     </nav>
@@ -23,7 +23,8 @@
         <div class="col-auto px-0">
             <div id="sidebar" class="collapse collapse-horizontal show border-end">
                 <div id="sidebar-nav" class="list-group border-0 rounded-0 text-sm-start min-vh-100">
-                    <%= link_to 'Home', admins_w_welcome_index_path, class: "list-group-item border-end-0 d-inline-block text-truncate" %>
+                    <%= link_to 'Home', site_welcome_index_path, class: "list-group-item border-end-0 d-inline-block text-truncate" %>
+                    <%= link_to 'Status', admins_w_welcome_index_path, class: "list-group-item border-end-0 d-inline-block text-truncate" %>
                     <%= link_to 'Admins', admins_w_admins_path, class: "list-group-item border-end-0 d-inline-block text-truncate" %>
                     <%= link_to 'Questões', admins_w_questions_path, class: "list-group-item border-end-0 d-inline-block text-truncate" %>
                     <%= link_to 'Assuntos/Áreas', admins_w_subjects_path, class: "list-group-item border-end-0 d-inline-block text-truncate" %>

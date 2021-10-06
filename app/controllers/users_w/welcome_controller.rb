@@ -13,6 +13,6 @@ class UsersW::WelcomeController < UsersWController
   private
 
   def set_statistic
-    @statistic = UserStatistic.find(current_user.id)
+    @statistic = UserStatistic.find_or_create_by(user: current_user)
   end
 end
